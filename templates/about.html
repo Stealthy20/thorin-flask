@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>About Page</h2>
+
+    <h2>{{ page_title }}</h2>
 
     <p>
         The formation of the group grew out of a meeting Gandalf had with Thorin in Bree which kindled Thorin's interest
@@ -11,176 +12,47 @@
         action. The superstitious Dwarves also considered thirteen to be an unlucky number, and as Gandalf had planned
         to leave on other business, welcomed a fourteenth to fill into their party.
     </p>
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Thorin Oakenshield</h3>
-            <p>
-                Thorin II was born in TA 2746 to Dwarf prince Thráin II in the city of the Lonely Mountain. Early in his
-                youth, he and the other Dwarves of the Lonely Mountain were forced to flee by the dragon Smaug in TA
-                2770. While in exile, he quickly grew to become a capable warrior. This was demonstrated when he
-                participated in the Battle of Azanulbizar in TA 2799. He fought with one of the Dwarven armies beneath
-                the East-gate of Moria. At some point in the fighting, his shield broke, and using an oaken tree branch
-                found on the ground as a shield, he gained the epithet "Oakenshield," which would remain with him even
-                in death.
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/7/76/Orcrist-Sword-of-Thorin-Oakenshield.jpg" alt="Image of Thorin Oakenshield">
-        </div>
-    </div>    
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="https://static.wikia.nocookie.net/lotr/images/b/b4/The-Hobbit-Fili-and-Kili.jpg" alt="Image of Kiri and Firi">
-        </div>
-        <div class="col-md-7">
-            <h3>Fili and Kili</h3>
-            <p>
-                Fíli and Kíli were brothers, the youngest of the thirteen Dwarves who set out with Thorin
-                Oakenshield's company, along with Gandalf and Bilbo Baggins, to reclaim the Lonely Mountain from the
-                dragon Smaug.
 
-                Fíli and Kíli were the two most active Dwarves of Thorin's company, and apart from Balin, and
-                possibly Bombur, they
-                appeared more frequently as "individual" characters in J.R.R. Tolkien's novel than the rest of
-                Thorin's companions, who
-                were most often named only in "group" references to the entire company.
-            </p>
-        </div>
-    </div>
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Óin</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="" alt="Image of Óin">
-        </div>
-    </div>
+    {% for member in company %}
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="" alt="Image of Gloin">
-        </div>
-        <div class="col-md-7">
-            <h3>Gloin</h3>
-            <p>
-                
-            </p>
-        </div>
-    </div>
+    
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>Balin</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="" alt="Image of Balin">
-        </div>
-    </div>
+        <div class="row featurette">
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="" alt="Image of Dwalin">
-        </div>
-        <div class="col-md-7">
-            <h3>Dwalin</h3>
-            <p>
-                
-            </p>
-        </div>
-    </div>
+            {% if loop.index % 2 != 0%}
 
-    <div class="row featurette">
-        
-        <div class="col-md-7">
-            <h3>Ori</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="" alt="Image of Ori">
-        </div>
-    </div>
+                <div class="col-md-7">
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+                    <p>
+                        {{ member.description }}
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="Image of {{ member.name }}" class="featurette-image image-responsive">
+                </div>
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="" alt="Image of Dori">
-        </div>
-        <div class="col-md-7">
-            <h3>Dori</h3>
-            <p>
-                
-            </p>
-        </div>
-    </div>
+            {% else %}    
 
-    <div class="row featurette">
-        
-        <div class="col-md-7">
-            <h3>Nori</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="" alt="Image of Nori">
-        </div>
-    </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="Image of {{ member.name }}" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+                    <p>
+                        {{ member.description }}
+                    </p>
+                </div>
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="" alt="Image of Bifur">
-        </div>
-        <div class="col-md-7">
-            <h3>Bifur</h3>
-            <p>
-                
-            </p>
-        </div>
-    </div>
+            {% endif %}
 
-    <div class="row featurette">
-        
-        <div class="col-md-7">
-            <h3>Bofur</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="" alt="Image of Bofur">
-        </div>
-    </div>
+        </div>    
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img src="" alt="Image of Bombur">
-        </div>
-        <div class="col-md-7">
-            <h3>Bombur</h3>
-            <p>
-                
-            </p>
-        </div>
-    </div>
+        {% if loop.index != loop.length %}
 
-    <div class="row featurette">
-        
-        <div class="col-md-7">
-            <h3>Gandalf</h3>
-            <p>
-                
-            </p>
-        </div>
-        <div class="col-md-5">
-            <img src="" alt="Image of Gandalf">
-        </div>
-    </div>
+        <hr class="featurette-divider">
 
+    {% endif %}
+
+    {% endfor %}
+    
 {% endblock %}
